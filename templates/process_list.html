@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histórico de Processamentos</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Histórico de Processamentos</h2>
+        <a href="/" class="btn btn-secondary mb-3">Voltar</a>
+        
+        <div id="processTable">
+            {% include '_process_table.html' %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %} 
