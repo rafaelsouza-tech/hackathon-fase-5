@@ -8,7 +8,7 @@ import argparse
 import subprocess
 
 class SecurityMonitor:
-    def __init__(self, model_path: str = 'yolov8n.pt', 
+    def __init__(self, model_path: str = 'models/best.pt',
                  alert_threshold: float = 0.25,  # Limiar de confiança ajustado para maior sensibilidade
                  min_iou: float = 0.1,          # Mínima sobreposição aceita (10% da área)
                  iou_threshold_ratio: float = 0.8,
