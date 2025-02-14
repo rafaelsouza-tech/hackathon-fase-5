@@ -16,15 +16,27 @@ model = YOLO(pretrained_model_path)  # Agora pegando de models/
 
 # Treinar o modelo com seu dataset personalizado
 model.train(
-    data="dataset/data.yaml",  # Caminho para o arquivo de configuração do dataset
+    data="datasets/dataset/data.yaml",  # Caminho do dataset
     epochs=50,  # Número de épocas de treinamento
-    batch=16,  # Tamanho do batch (ajuste conforme sua GPU)
-    imgsz=640,  # Tamanho das imagens usadas no treinamento
-    workers=4,  # Número de threads para carregamento de dados
-    device="cuda",  # Usa GPU se disponível, senão usa CPU
-    project="models",  # Define onde os arquivos serão salvos
-    name="train_run",  # Nome da pasta de saída dentro de "models/"
-    exist_ok=True  # Reutiliza a pasta sem sobrescrever conteúdos antigos
+    batch=16,  # Tamanho do batch
+    imgsz=640,  # Tamanho da imagem
+    workers=4,  # Número de processos para carregamento de dados
+    device="cuda",  # Treina na GPU (se disponível)
+    project="models",  # Salva os resultados dentro de "models/"
+    name="train_run",  # Nome do treino dentro de "models/"
+    exist_ok=True,  # Permite reutilizar a pasta
+    pretrained=True,  # Mantém o aprendizado do modelo original
+    optimizer="SGD",  # Usa o otimizador SGD
+    amp=True,  # Ativa precisão mista para treinar mais rápido
+    resume=False,  # NÃO tentar carregar um checkpoint antigo
+    close_mosaic=10,  # Ajusta mosaico para estabilizar treino
+    cos_lr=True,  # Usa decaimento de taxa de aprendizado em formato cosseno
+    lr0=0.01,  # Taxa de aprendizado inicial
+    weight_decay=0.0005,  # Decaimento de peso (regularização)
+    momentum=0.937,  # Momento do SGD
+    warmup_epochs=3.0,  # Quantidade de épocas de warmup
+    val=True,  # Ativa validação durante o treino
+    save=True  # Salva checkpoints do melhor modelo
 )
 
 # Caminho do modelo gerado automaticamente pelo YOLO

@@ -14,7 +14,7 @@ class SecurityMonitor:
                  iou_threshold_ratio: float = 0.8,
                  alert_cooldown: int = 5):  # Novo parâmetro: cooldown em segundos
         self.model = YOLO(model_path)  # Carrega o modelo YOLOv8 pré-treinado
-        self.classes_of_interest = [43, 76]  # IDs do COCO dataset para facas e tesouras
+        self.classes_of_interest = [43, 75, 81]  # IDs do COCO dataset para facas e tesouras
         self.alert_threshold = alert_threshold
         self.last_alert_time = None
         
